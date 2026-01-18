@@ -21,14 +21,14 @@
 
 | Keypad Pin | ESP32-S3 GPIO |
 | :--- | :--- |
-| Row 0 | GPIO 1 |
-| Row 1 | GPIO 2 |
-| Row 2 | GPIO 42 |
-| Row 3 | GPIO 41 |
-| Col 0 | GPIO 40 |
-| Col 1 | GPIO 39 |
-| Col 2 | GPIO 38 |
-| Col 3 | GPIO 37 |
+| Row 0 | GPIO 4 |
+| Row 1 | GPIO 5 |
+| Row 2 | GPIO 6 |
+| Row 3 | GPIO 7 |
+| Col 0 | GPIO 15 |
+| Col 1 | GPIO 16 |
+| Col 2 | GPIO 17 |
+| Col 3 | GPIO 17 |
 
 * **Nút Clear:** Sử dụng nút BOOT tích hợp sẵn (GPIO 0).
 
