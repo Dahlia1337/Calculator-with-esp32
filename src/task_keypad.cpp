@@ -1,3 +1,4 @@
+#include <Keypad.h>
 #include "task_keypad.h"
 #include "calc_core.h"
 #include "button.h"
@@ -10,7 +11,7 @@ char keys[ROWS][COLS] = {
 	{'7', '8', '9', '+'},
 	{'4', '5', '6', '-'},
 	{'1', '2', '3', '*'},
-	{'0', '=', '.', '/'}};
+	{'0', '.', '=', '/'}};
 
 // Khai báo chân GPIO
 byte rowPins[ROWS] = {4, 5, 6, 7};
@@ -30,7 +31,7 @@ void task_keypad(void *pvParameters)
 		if (isButtonPressed())
 		{
 			calc_reset();
-			//Serial.println("--- Clear ---");
+			Serial.println("--- Clear ---");
 		}
 
 		// 2. Quét phím
@@ -39,6 +40,10 @@ void task_keypad(void *pvParameters)
 		// 3. Nếu có phím, đẩy sang cho calc_core xử lý
 		if (customKey)
 		{
+			if (keyQueue != NULL) {
+                // Gửi vào Queue, chờ tối đa 10 tick nếu Queue đang đầy
+                xQueueSend(keyQueue, &customKey, (TickType_t)10);
+            }
 			calc_process_input(customKey);
 		}
 

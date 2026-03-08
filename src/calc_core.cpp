@@ -16,6 +16,7 @@ void calc_reset(){
     firstNumber = 0;
     secondNumber = 0;
     currentOperator = 0;
+    currentDisplay = "0";
     isResultDisplayed = false;
     Serial.println("\n[Calc] System Ready. Waiting for input...");
 };
@@ -51,7 +52,9 @@ void calc_process_input(char key){
             currentOperator = key;                // Lưu phép tính
             currentInput = "";                    // Xóa để nhập số mới
             isResultDisplayed = false;
-            
+
+            currentDisplay = String(firstNumber) + " " + String(currentOperator);
+
             Serial.print(" ");
             Serial.print(currentOperator);
             Serial.print(" ");
@@ -76,12 +79,15 @@ void calc_process_input(char key){
 
             Serial.print(" = ");
             if (error) {
+                currentDisplay = "Error";
                 Serial.println("Error");
             } else {
+                currentDisplay = String(result);
                 Serial.println(result);
                 firstNumber = result;
                 currentInput = String(result); 
             }
+            currentOperator = 0;    
             isResultDisplayed = true; // Đánh dấu đã xong
         }
     }

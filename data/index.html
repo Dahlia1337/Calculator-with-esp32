@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32 Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab('calc')">Máy Tính</button>
+        <button class="tab-btn" onclick="openTab('wifi')">Cài WiFi</button>
+    </div>
+
+    <div id="calc" class="tab-content active">
+        <div class="screen" id="display">
+            0
+        </div>
+
+        <div class="keypad">
+            <button class="key" onclick="sendKey('1')">1</button>
+            <button class="key" onclick="sendKey('2')">2</button>
+            <button class="key" onclick="sendKey('3')">3</button>
+            <button class="key operator" onclick="sendKey('+')">+</button>
+            
+            <button class="key" onclick="sendKey('4')">4</button>
+            <button class="key" onclick="sendKey('5')">5</button>
+            <button class="key" onclick="sendKey('6')">6</button>
+            <button class="key operator" onclick="sendKey('-')">-</button>
+            
+            <button class="key" onclick="sendKey('7')">7</button>
+            <button class="key" onclick="sendKey('8')">8</button>
+            <button class="key" onclick="sendKey('9')">9</button>
+            <button class="key operator" onclick="sendKey('*')">*</button>
+            
+            <button class="key clear" onclick="sendKey('.')">.</button>
+            <button class="key" onclick="sendKey('0')">0</button>
+            <button class="key operator" onclick="sendKey('=')">=</button>
+            <button class="key operator" onclick="sendKey('/')">/</button>
+        </div>
+    </div>
+
+    <div id="wifi" class="tab-content">
+        <form id="wifiForm" onsubmit="saveWiFi(event)">
+            <div class="form-group">
+                <label>Tên WiFi (SSID):</label>
+                <input type="text" id="ssid" required>
+            </div>
+            <div class="form-group">
+                <label>Mật khẩu:</label>
+                <input type="password" id="password" required>
+            </div>
+            <button type="submit" class="btn-submit">Lưu & Khởi động lại</button>
+        </form>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

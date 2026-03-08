@@ -3,7 +3,7 @@
 
 #include <Arduino.h>
 #include <Adafruit_NeoPixel.h>
-#include <Keypad.h>
+
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 
@@ -19,7 +19,9 @@
 #define I2C_SDA 14
 #define I2C_SCL 13
 
-//extern volatile bool clear_requested;
+extern volatile bool clear_requested;
+extern QueueHandle_t keyQueue;
+extern String currentDisplay;
 
 void togglePin(int pin);
 
